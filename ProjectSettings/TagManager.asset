@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Farground
+    uniqueID: 3896527215
+    locked: 0
+  - name: Background
+    uniqueID: 634434095
+    locked: 0
+  - name: Foreground
+    uniqueID: 875076143
+    locked: 0
+  - name: Vegetation
+    uniqueID: 3392365065
+    locked: 0
+  - name: Ground
+    uniqueID: 1963948393
+    locked: 0
+  - name: Waterfall
+    uniqueID: 3122860167
+    locked: 0
