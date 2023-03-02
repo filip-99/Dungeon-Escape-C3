@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -53,9 +54,15 @@ TagManager:
   - name: Vegetation
     uniqueID: 3392365065
     locked: 0
+  - name: Pickup
+    uniqueID: 1576553465
+    locked: 0
   - name: Ground
     uniqueID: 1963948393
     locked: 0
   - name: Waterfall
     uniqueID: 3122860167
+    locked: 0
+  - name: Player
+    uniqueID: 1264047465
     locked: 0
