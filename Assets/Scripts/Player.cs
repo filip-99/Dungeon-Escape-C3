@@ -9,27 +9,39 @@ public class Player : MonoBehaviour
 
     Rigidbody2D myRigidBody;
     BoxCollider2D myCollider;
+    SpriteRenderer mySpriteRenderer;
 
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce = 2f;
+
+    Vector2 moveInput;
+
     void Start()
     {
         myRigidBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
+        mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
     {
-        // GetAxisRaw() utiče na to da igrač ne klizi, dakle kad se pusti dugme setuje brzinu na 0 odmah
-        myRigidBody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * moveSpeed, myRigidBody.velocity.y);
-
+        Run();
+        FlipSprite();
     }
 
     void OnJump(InputValue value)
     {
-        if (value.isPressed)
+
+        // hitInfo biće !=null u koliko se od pozicije ispod igrača za 1f nalazi neki objekat
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 5.0f);
+
+        if (hitInfo.collider != null)
         {
-            Debug.Log("Dodiruje");
+            Debug.Log("Hit: " + hitInfo.collider.name);
+        }
+
+        if (value.isPressed && myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
             myRigidBody.velocity = new Vector2(myRigidBody.velocity.x, jumpForce);
         }
     }
@@ -38,5 +50,27 @@ public class Player : MonoBehaviour
     {
 
         // myRigidBody.velocity = new Vector2(value.Get<Vector2>() * moveSpeed, myRigidBody.velocity.y);
+        moveInput = value.Get<Vector2>();
+    }
+
+    void Run()
+    {
+        myRigidBody.velocity = new Vector2(moveInput.x * moveSpeed, myRigidBody.velocity.y);
+    }
+
+    private void FlipSprite()
+    {
+        bool playerHorizontalSpeed = Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon;
+        if (playerHorizontalSpeed)
+        {
+            if (Mathf.Sign(myRigidBody.velocity.x) == 1)
+            {
+                mySpriteRenderer.flipX = false;
+            }
+            else if (Mathf.Sign(myRigidBody.velocity.x) == -1)
+            {
+                mySpriteRenderer.flipX = true;
+            }
+        }
     }
 }
