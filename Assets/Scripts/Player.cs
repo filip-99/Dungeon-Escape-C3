@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     Rigidbody2D myRigidBody;
     BoxCollider2D myCollider;
     SpriteRenderer mySpriteRenderer;
+    Animator myAnimator;
 
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float jumpForce = 2f;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
         myRigidBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
         mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        myAnimator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -56,6 +58,8 @@ public class Player : MonoBehaviour
     void Run()
     {
         myRigidBody.velocity = new Vector2(moveInput.x * moveSpeed, myRigidBody.velocity.y);
+        myAnimator.SetFloat("Move", Mathf.Abs(myRigidBody.velocity.x));
+
     }
 
     private void FlipSprite()
