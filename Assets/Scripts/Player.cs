@@ -29,18 +29,19 @@ public class Player : MonoBehaviour
     {
         Run();
         FlipSprite();
+        myAnimator.SetBool("Jumping", !myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")));
     }
 
     void OnJump(InputValue value)
     {
 
         // hitInfo biće !=null u koliko se od pozicije ispod igrača za 1f nalazi neki objekat
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 5.0f);
-
-        if (hitInfo.collider != null)
-        {
-            Debug.Log("Hit: " + hitInfo.collider.name);
-        }
+        // RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, Vector2.down, 5.0f);
+        // 
+        // if (hitInfo.collider != null)
+        // {
+        //     Debug.Log("Hit: " + hitInfo.collider.name);
+        // }
 
         if (value.isPressed && myCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
