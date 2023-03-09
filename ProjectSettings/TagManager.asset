@@ -63,6 +63,9 @@ TagManager:
   - name: Waterfall
     uniqueID: 3122860167
     locked: 0
+  - name: Effects
+    uniqueID: 2402542841
+    locked: 0
   - name: Player
     uniqueID: 1264047465
     locked: 0
