@@ -13,4 +13,9 @@ public class Spider : Enemy
     {
         base.Attack();
     }
+
+    public override void Update()
+    {
+
+    }
 }
