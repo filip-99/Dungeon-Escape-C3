@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
@@ -7,19 +8,64 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     protected int health;
     [SerializeField]
-    protected int speed;
+    protected float speed;
     [SerializeField]
     protected int gems;
     [SerializeField]
+
     protected Transform pointA, pointB;
-    [SerializeField]
-    protected float moveSpeed;
+    protected SpriteRenderer mySpriteRenderer;
+    protected Animator myAnimator;
 
+    protected bool moveRight = true;
 
-    public virtual void Attack()
+    public virtual void Init()
     {
-        Debug.Log("Ime objekta je: " + this.gameObject.name);
+        mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        myAnimator = GetComponentInChildren<Animator>();
     }
 
-    public abstract void Update();
+    public void Start()
+    {
+        Init();
+        pointA.parent = null;
+        pointB.parent = null;
+    }
+
+    public virtual void Update()
+    {
+        if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Idle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Moss_Giant_Idle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Spider_Idle"))
+        {
+            return;
+        }
+        MoveEnemy();
+    }
+
+    public virtual void MoveEnemy()
+    {
+        if (moveRight)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
+            if (transform.position.x >= pointB.position.x)
+            {
+                WaitAndMove(false);
+            }
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
+            if (transform.position.x <= pointA.position.x)
+            {
+                WaitAndMove(true);
+            }
+        }
+
+    }
+
+    public virtual void WaitAndMove(bool isTrue)
+    {
+        myAnimator.SetTrigger("Idle");
+        mySpriteRenderer.flipX = !isTrue;
+        moveRight = isTrue;
+    }
 }
