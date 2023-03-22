@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MossGiant : Enemy
+public class MossGiant : Enemy, IDamageable
 {
+    int IDamageable.health { get; set; }
 
     public override void Init()
     {
         base.Init();
     }
 
-    public override void Update()
+    void IDamageable.Damage()
     {
-        base.Update();
+        
     }
 }

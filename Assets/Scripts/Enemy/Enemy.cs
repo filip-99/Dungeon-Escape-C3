@@ -18,6 +18,7 @@ public abstract class Enemy : MonoBehaviour
     protected Animator myAnimator;
 
     protected bool moveRight = true;
+    protected bool isHit;
 
     public virtual void Init()
     {
@@ -43,21 +44,25 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void MoveEnemy()
     {
-        if (moveRight)
+        if (!isHit)
         {
-            transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
-            if (transform.position.x >= pointB.position.x)
+            if (moveRight)
             {
-                WaitAndMove(false);
+                transform.position = Vector3.MoveTowards(transform.position, pointB.position, speed * Time.deltaTime);
+                if (transform.position.x >= pointB.position.x)
+                {
+                    WaitAndMove(false);
+                }
             }
-        }
-        else
-        {
-            transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
-            if (transform.position.x <= pointA.position.x)
+            else
             {
-                WaitAndMove(true);
+                transform.position = Vector3.MoveTowards(transform.position, pointA.position, speed * Time.deltaTime);
+                if (transform.position.x <= pointA.position.x)
+                {
+                    WaitAndMove(true);
+                }
             }
+
         }
 
     }
