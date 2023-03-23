@@ -76,8 +76,7 @@ public class Player : MonoBehaviour
     void Run()
     {
         myRigidBody.velocity = new Vector2(moveInput.x * moveSpeed, myRigidBody.velocity.y);
-        myAnimator.SetFloat("Move", Mathf.Abs(myRigidBody.velocity.x));
-
+        myAnimator.SetBool("Move", Mathf.Abs(myRigidBody.velocity.x) > Mathf.Epsilon);
     }
 
     private void FlipSprite()

@@ -25,4 +25,11 @@ public class Skeleton : Enemy, IDamageable
         }
     }
 
+    public override void MoveEnemy()
+    {
+        base.MoveEnemy();
+        float distance = Vector3.Distance(transform.localPosition, myPlayer.transform.localPosition);
+        Debug.Log(distance);
+    }
+
 }

@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,11 +19,14 @@ public abstract class Enemy : MonoBehaviour
 
     protected bool moveRight = true;
     protected bool isHit;
+    protected Player myPlayer;
 
     public virtual void Init()
     {
         mySpriteRenderer = GetComponentInChildren<SpriteRenderer>();
         myAnimator = GetComponentInChildren<Animator>();
+        // Pronalaženje objekta po tagu Player
+        myPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     public void Start()
@@ -36,9 +39,9 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Update()
     {
         if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Idle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Moss_Giant_Idle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Spider_Idle"))
-        {
-            return;
-        }
+            if (!myAnimator.GetBool("InCombat")) // U koliko je "prekidač" za napad na kostura setovan na true
+                return;
+
         MoveEnemy();
     }
 
@@ -63,6 +66,13 @@ public abstract class Enemy : MonoBehaviour
                 }
             }
 
+        }
+
+        float distance = Vector3.Distance(transform.localPosition, myPlayer.transform.localPosition);
+        if (distance > 2.0f)
+        {
+            isHit = false;
+            myAnimator.SetBool("InCombat", false);
         }
 
     }
