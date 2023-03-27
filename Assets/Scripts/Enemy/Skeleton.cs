@@ -18,7 +18,7 @@ public class Skeleton : Enemy, IDamageable
         health--;
         myAnimator.SetTrigger("Hit");
         isHit = true;
-        myAnimator.SetBool("InCombat", true);
+        myAnimator.SetBool("IsCombat", true);
         if (health < 1)
         {
             Destroy(this.gameObject);
@@ -28,8 +28,20 @@ public class Skeleton : Enemy, IDamageable
     public override void MoveEnemy()
     {
         base.MoveEnemy();
-        float distance = Vector3.Distance(transform.localPosition, myPlayer.transform.localPosition);
-        Debug.Log(distance);
+        // float distance = Vector3.Distance(transform.localPosition, myPlayer.transform.localPosition);
+        // Debug.Log(distance);
+
+        // direction sadrži vrednost, koja predstavlja udaljenost igrača i skeletona
+        Vector3 direction = myPlayer.transform.localPosition - transform.localPosition;
+
+        if (direction.x > Mathf.Epsilon && myAnimator.GetBool("IsCombat"))
+        {
+            mySpriteRenderer.flipX = false;
+        }
+        else if (direction.x < Mathf.Epsilon && myAnimator.GetBool("IsCombat"))
+        {
+            mySpriteRenderer.flipX = true;
+        }
     }
 
 }

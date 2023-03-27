@@ -39,7 +39,7 @@ public abstract class Enemy : MonoBehaviour
     public virtual void Update()
     {
         if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Idle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Moss_Giant_Idle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Spider_Idle"))
-            if (!myAnimator.GetBool("InCombat")) // U koliko je "prekidač" za napad na kostura setovan na true
+            if (!myAnimator.GetBool("IsCombat")) // U koliko je "prekidač" za napad na kostura setovan na true
                 return;
 
         MoveEnemy();
@@ -72,7 +72,7 @@ public abstract class Enemy : MonoBehaviour
         if (distance > 2.0f)
         {
             isHit = false;
-            myAnimator.SetBool("InCombat", false);
+            myAnimator.SetBool("IsCombat", false);
         }
 
     }
