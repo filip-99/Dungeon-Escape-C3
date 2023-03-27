@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     // Biće kreirana funkcionalnost za mobile i pc
 
@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     [SerializeField] float jumpForce = 2f;
 
     Vector2 moveInput;
+
+    public int health { get; set; }
 
     void Start()
     {
@@ -101,5 +103,10 @@ public class Player : MonoBehaviour
                 mySwordSpriteRender.flipY = true;
             }
         }
+    }
+
+    public void Damage()
+    {
+        Debug.Log("hedsot");
     }
 }
