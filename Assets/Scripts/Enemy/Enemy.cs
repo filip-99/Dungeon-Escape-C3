@@ -20,6 +20,7 @@ public abstract class Enemy : MonoBehaviour
     protected bool moveRight = true;
     protected bool isHit;
     protected Player myPlayer;
+    protected bool isDead = false;
 
     public virtual void Init()
     {
@@ -41,8 +42,8 @@ public abstract class Enemy : MonoBehaviour
         if (myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Skeleton_Idle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Moss_Giant_Idle") || myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Spider_Idle"))
             if (!myAnimator.GetBool("InCombat")) // U koliko je "prekidač" za napad na kostura setovan na true
                 return;
-
-        MoveEnemy();
+        if (!isDead)
+            MoveEnemy();
     }
 
     public virtual void MoveEnemy()

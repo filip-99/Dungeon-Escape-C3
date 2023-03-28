@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Animation
+  m_Title: Game
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 23
+  controlID: 126
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 34
+  controlID: 127
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: AnimationWindow
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -191,14 +191,14 @@ MonoBehaviour:
     y: 453
     width: 1017
     height: 494
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 16}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
   - {fileID: 16}
   - {fileID: 13}
-  m_Selected: 1
+  m_Selected: 0
   m_LastSelected: 2
 --- !u!114 &9
 MonoBehaviour:
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 85
+  controlID: 55
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -297,8 +297,8 @@ MonoBehaviour:
     y: 0
     width: 453
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -341,14 +341,14 @@ MonoBehaviour:
     - {fileID: -5921336935613743260, guid: 44ebe1fe415239049931d678f8223aea, type: 2}
     - {fileID: 2695804467082551858, guid: 9da48a764e0abb740b7dcbd7e8cdac0b, type: 2}
     m_ValueSerializationHelper:
-    - e00: 1.1363368
+    - e00: 0.9577153
       e01: 0
       e02: 0
-      e03: -657.877
+      e03: -52.896095
       e10: 0
-      e11: 1.1363368
+      e11: 0.9577153
       e12: 0
-      e13: -51.754684
+      e13: 68.94462
       e20: 0
       e21: 0
       e22: 1
@@ -392,7 +392,7 @@ MonoBehaviour:
     - e00: 0.65157896
       e01: 0
       e02: 0
-      e03: -17.578949
+      e03: 65.421036
       e10: 0
       e11: 0.65157896
       e12: 0
@@ -438,9 +438,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: af991dcd08e400e47ba3ee1a62bf5648, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: 44ebe1fe415239049931d678f8223aea, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -813956935607862131, guid: af991dcd08e400e47ba3ee1a62bf5648, type: 2}
+  - m_Target: {fileID: -5921336935613743260, guid: 44ebe1fe415239049931d678f8223aea, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -508,7 +508,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-scene-view-toolbar
@@ -530,7 +530,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -717,7 +717,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: -151, y: 0}
+      snapOffset: {x: -151, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 1
       id: Scene View/Tilemap Focus
@@ -733,9 +733,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -46.35167, y: 2.6573079, z: 0.06124465}
+    m_Target: {x: -46.861496, y: 2.405795, z: -0.003215082}
     speed: 2
-    m_Value: {x: -46.35167, y: 2.6573079, z: 0.06124465}
+    m_Value: {x: -46.861496, y: 2.405795, z: -0.003215082}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -786,9 +786,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2.6698818
+    m_Target: 2.4050205
     speed: 2
-    m_Value: 2.6698818
+    m_Value: 2.4050205
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -935,7 +935,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 25824
+  m_LastSelectedObjectID: 25710
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -967,9 +967,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: e896ffff
-      m_LastClickedID: 0
-      m_ExpandedIDs: 06fbffff68640000
+      m_SelectedIDs: c2640000
+      m_LastClickedID: 25794
+      m_ExpandedIDs: 06fbffff6e640000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1069,22 +1069,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 81
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: 81
   m_LastProjectPath: C:\Users\user\Documents\Unity\Dungeon Escape C3
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 526e0000
-    m_LastClickedID: 28242
-    m_ExpandedIDs: 00000000fe6d0000006e0000026e0000046e0000066e0000086e00003e6e0000
+    m_SelectedIDs: a06f0000
+    m_LastClickedID: 28576
+    m_ExpandedIDs: 000000009c6f00009e6f0000a06f0000a26f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1112,7 +1112,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000fe6d0000006e0000026e0000046e0000066e0000086e0000
+    m_ExpandedIDs: 000000009c6f00009e6f0000a06f0000a26f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
