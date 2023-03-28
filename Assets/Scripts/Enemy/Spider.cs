@@ -6,13 +6,18 @@ public class Spider : Enemy, IDamageable
 {
     int IDamageable.health { get; set; }
 
+    public override void Init()
+    {
+        base.Init();
+    }
+
     public void Damage()
     {
 
     }
 
-    public override void Init()
+    public override void MoveEnemy()
     {
-        base.Init();
+        
     }
 }
