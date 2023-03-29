@@ -33,12 +33,16 @@ public class Skeleton : Enemy, IDamageable
 
     public void Damage()
     {
+        if (isDead)
+            return;
         health--;
         myAnimator.SetTrigger("Hit");
         isHit = true;
         myAnimator.SetBool("InCombat", true);
         if (health < 1)
         {
+            Instantiate(diamondInstance, gameObject.transform.position, Quaternion.identity);
+            Instantiate(diamondInstance, gameObject.transform.position, Quaternion.identity).GetComponent<Diamond>().gems = base.gems;
             isDead = true;
             myAnimator.SetTrigger("Death");
 

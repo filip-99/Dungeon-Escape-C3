@@ -20,11 +20,15 @@ public class Spider : Enemy, IDamageable
 
     public void Damage()
     {
+        if (isDead)
+            return;
         Debug.Log("Pauk kill");
         health--;
         Debug.Log(health);
         if (health < 1)
         {
+            Instantiate(diamondInstance, gameObject.transform.position, Quaternion.identity);
+            Instantiate(diamondInstance, gameObject.transform.position, Quaternion.identity).GetComponent<Diamond>().gems = base.gems;
             isDead = true;
             myAnimator.SetTrigger("Death");
         }

@@ -20,6 +20,8 @@ public class Player : MonoBehaviour, IDamageable
 
     Vector2 moveInput;
 
+    public int diamond;
+
     public int health { get; set; }
 
     void Start()
