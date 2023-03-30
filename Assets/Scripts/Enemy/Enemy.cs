@@ -10,11 +10,12 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     protected float speed;
     [SerializeField]
-    protected int gems ;
-    [SerializeField]
-    protected GameObject diamondInstance;
+    protected int gems;
     [SerializeField]
     protected Transform pointA, pointB;
+
+    [SerializeField]
+    protected GameObject diamondInstance;
 
     protected SpriteRenderer mySpriteRenderer;
     protected Animator myAnimator;
