@@ -21,11 +21,17 @@ public class UIManager : MonoBehaviour
 
     public TextMeshProUGUI playerGemCountText;
     public Image selectionImg;
+    public TextMeshProUGUI gemCountText;
+
+    [SerializeField] Image[] healthSprite;
 
     private void Awake()
     {
         // Promenjivoj instance dodeljujemo referencu na ovu skriptu i time obezbeđujemo samo jednu referencu na klasu
         instance = this;
+
+        // Ovaj kod će postaviti vidljivost igračkog objekta na true ako se aplikacija pokreće na mobilnoj platformi, a na false u suprotnom slučaju.
+        // gameObject.SetActive(Application.isMobilePlatform);
     }
 
     // Potrebna je metoda koja će ažurirati podatke, kada se pojavi panel za šop
@@ -39,5 +45,29 @@ public class UIManager : MonoBehaviour
     public void UpdateShopSelection(int yPos)
     {
         selectionImg.rectTransform.anchoredPosition = new Vector2(selectionImg.rectTransform.anchoredPosition.x, yPos);
+    }
+
+    public void UpdateGemCount(int count)
+    {
+        gemCountText.text = "" + count;
+    }
+
+    public void UpdateLives(int health)
+    {
+        switch (health)
+        {
+            case 3:
+                healthSprite[3].gameObject.SetActive(false);
+                break;
+            case 2:
+                healthSprite[2].gameObject.SetActive(false);
+                break;
+            case 1:
+                healthSprite[1].gameObject.SetActive(false);
+                break;
+            case 0:
+                healthSprite[0].gameObject.SetActive(false);
+                break;
+        }
     }
 }

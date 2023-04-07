@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour, IDamageable
         // Na ovaj naćin dolazimo direkt do podobjekta i referenciramo na njegovu komponentu animator
         mySwordAnimation = transform.GetChild(1).GetComponent<Animator>();
         mySwordSpriteRender = transform.GetChild(1).GetComponent<SpriteRenderer>();
+
+        health = 4;
     }
 
     void Update()
@@ -109,6 +112,19 @@ public class Player : MonoBehaviour, IDamageable
 
     public void Damage()
     {
-        myAnimator.SetTrigger("Death");
+        if (health < 1)
+            return;
+
+        health--;
+        UIManager.Instance.UpdateLives(health);
+
+        if (health < 1)
+            myAnimator.SetTrigger("Death");
+    }
+
+    public void AddGems(int amount)
+    {
+        diamond += amount;
+        UIManager.Instance.UpdateGemCount(diamond);
     }
 }
