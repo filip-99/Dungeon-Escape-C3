@@ -36,12 +36,18 @@ public class AdsManager : MonoBehaviour
             {
                 // "ShowResult.Finished", to znači da je reklama uspešno prikazana do kraja i da igraču treba dodeliti 100 dragulja za odgledanu reklamu
                 case ShowResult.Finished:
+                    Debug.Log("You Finished The Ad! here's 100 Gems!");
+                    GameManager.Instance.Player.AddGems(100);
+                    UIManager.Instance.OpenShop(GameManager.Instance.Player.diamond);
+
                     break;
                 // "ShowResult.Skipped", to znači da je korisnik preskočio reklamu, i u ovom slučaju se obično ne preduzima nikakva posebna akcija
                 case ShowResult.Skipped:
+                    Debug.Log("You skiped The Ad! No gems for you!");
                     break;
                 // "ShowResult.Failed", to znači da je došlo do neke greške pri prikazivanju reklame
                 case ShowResult.Failed:
+                    Debug.Log("You video failed, it must not have been ready");
                     break;
             }
         }
